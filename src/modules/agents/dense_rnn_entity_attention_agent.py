@@ -29,8 +29,8 @@ class DenseRNNEntityAttentionAgent(nn.Module):
         # print(inputs.shape)
         # print(hidden_state.shape)
 
-        self_attention_part_before = th.ones(inputs.size()[0], self.before_entity_size)#.cuda()
-        self_attention_part_after = th.ones(inputs.size()[0], self.after_entity_size)#.cuda()
+        self_attention_part_before = th.ones(inputs.size()[0], self.before_entity_size).cuda()# GPU version
+        self_attention_part_after = th.ones(inputs.size()[0], self.after_entity_size).cuda()# GPU version
 
         attention_part = self.entity_attention(inputs)
         attention_part = attention_part.unsqueeze(-1).expand(
